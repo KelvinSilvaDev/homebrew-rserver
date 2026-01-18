@@ -12,11 +12,9 @@ class Rserver < Formula
   depends_on "python@3.9"
 
   def install
-    # Instalar via pip do diretório cli
+    # O release 0.0.1 usa a estrutura antiga com src/ em vez de rsctl/
+    # O setup.py do release já está configurado para src/, então funciona direto
     cd "cli" do
-      # O setup.py procura rsctl/ no diretório atual (cli/)
-      # Garantir que o PYTHONPATH inclui o diretório cli
-      ENV["PYTHONPATH"] = buildpath/"cli"
       system "python3", "-m", "pip", "install", "--prefix=#{prefix}", "."
     end
   end
