@@ -16,9 +16,9 @@ class Rserver < Formula
     cd "cli" do
       # Corrigir entry point
       inreplace "setup.py", 'rserver=rsctl.cli.commands:main', 'rserver=cli.cli.commands:main'
-      # Remover completamente package_data que referencia rsctl (causa erro "package directory 'src/rsctl' does not exist")
-      # Usar substituição mais agressiva para remover toda a linha package_data
-      inreplace "setup.py", /package_data=\{[^}]*"rsctl"[^}]*\},/, ''
+      # Remover completamente o bloco package_data (causa erro "package directory 'src/rsctl' does not exist")
+      # Substituir todo o bloco package_data por um dicionário vazio
+      inreplace "setup.py", /package_data=\{[^}]*\},/, 'package_data={},'
       system "python3", "-m", "pip", "install", "--prefix=#{prefix}", "."
     end
   end
