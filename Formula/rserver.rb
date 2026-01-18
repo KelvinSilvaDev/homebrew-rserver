@@ -13,8 +13,11 @@ class Rserver < Formula
 
   def install
     # O release 0.0.1 usa a estrutura antiga com src/ em vez de rsctl/
-    # O setup.py do release já está configurado para src/, então funciona direto
+    # O setup.py tem um bug: entry point usa rsctl mas pacote está em src/
     cd "cli" do
+      # Corrigir entry point no setup.py
+      inreplace "setup.py", 'rserver=rsctl.cli.commands:main', 'rserver=src.cli.commands:main'
+      inreplace "setup.py", '"rsctl":', '"src":'
       system "python3", "-m", "pip", "install", "--prefix=#{prefix}", "."
     end
   end
