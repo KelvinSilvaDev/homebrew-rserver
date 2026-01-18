@@ -4,8 +4,8 @@
 class Rserver < Formula
   desc "Remote Server Control - CLI multiplataforma para gerenciar serviços remotos"
   homepage "https://github.com/KelvinSilvaDev/rserver"
-  url "https://github.com/KelvinSilvaDev/rserver/archive/v0.0.1.tar.gz"
-  sha256 "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed"
+  url "https://github.com/KelvinSilvaDev/rserver/archive/0.0.1.tar.gz"
+  sha256 "45d92546765d937b9cdee55408fd765bc2831a0ca19fe808cdcfd3eac5017d80"
   license "Apache-2.0"
   head "https://github.com/KelvinSilvaDev/rserver.git", branch: "main"
 
