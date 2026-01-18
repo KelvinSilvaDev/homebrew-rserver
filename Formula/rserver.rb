@@ -14,6 +14,9 @@ class Rserver < Formula
   def install
     # Instalar via pip do diretório cli
     cd "cli" do
+      # O setup.py procura rsctl/ no diretório atual (cli/)
+      # Garantir que o PYTHONPATH inclui o diretório cli
+      ENV["PYTHONPATH"] = buildpath/"cli"
       system "python3", "-m", "pip", "install", "--prefix=#{prefix}", "."
     end
   end
