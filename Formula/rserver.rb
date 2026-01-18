@@ -17,8 +17,8 @@ class Rserver < Formula
     cd "cli" do
       # Corrigir entry point no setup.py
       inreplace "setup.py", 'rserver=rsctl.cli.commands:main', 'rserver=src.cli.commands:main'
-      # Remover ou corrigir package_data que referencia rsctl inexistente
-      inreplace "setup.py", /"rsctl":\s*\[.*?\]/, '"src": ["../services.json"]'
+      # Remover package_data que referencia rsctl inexistente (causa erro)
+      inreplace "setup.py", /"rsctl":\s*\[.*?\],/, ''
       system "python3", "-m", "pip", "install", "--prefix=#{prefix}", "."
     end
   end
